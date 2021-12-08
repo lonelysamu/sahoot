@@ -67,6 +67,6 @@ switch ($_POST['a']) {
 
         is_numeric($addScore) ?
             exitStatus("OK", ['status' => true, "score" => $score, "time" => $time, "debug" => $debug]) :
-            exitStatus("OK", ['status' => false, "reason" => $addScore, "time" => $time, "debug" => $debug]);
+            exitStatus("OK", ['status' => false, "score" => $score, "reason" => $addScore, "time" => $time, "debug" => $debug]);
         break;
 }
