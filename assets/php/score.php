@@ -54,7 +54,7 @@ switch ($_POST['a']) {
 
         $addScore = $mysql->Exec_Prepared(
             "INSERT INTO score (s_phone,s_name,s_score) VALUES (?,?,?) ",
-            "si",
+            "ssi",
             [$_POST['phone'],$_POST['name'], $score]
         );
 

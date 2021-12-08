@@ -78,24 +78,26 @@ document.querySelector('#contentbody').addEventListener('click', (e) => {
             document.querySelectorAll(`.${set}question`)[current].classList.remove("d-none");
             document.querySelectorAll(`.${set}question`)[current].classList.add("fadefromleft1");
 
-            connect.POST(
-                "/assets/php/score.php",
-                {
-                    a:"SCORE",
-                    name : document.getElementById("name").value,
-                    phone:document.getElementById("phonenumber").value,
-                    set : set,
-                    ans : answers 
-                },
-                (a,b) => {            
-                    if(b.status) {
-                        alert(`Thank you ! Your score is ${b.score} !`);
-                    } else {
-                        console.error(b);
+            if(current > 9 ){ 
+                connect.POST(
+                    "/assets/php/score.php",
+                    {
+                        a:"SCORE",
+                        name : document.getElementById("name").value,
+                        phone:document.getElementById("phonenumber").value,
+                        set : set,
+                        ans : answers 
+                    },
+                    (a,b) => {            
+                        if(b.status) {
+                            alert(`Thank you ! Your score is ${b.score} !`);
+                        } else {
+                            console.error(b);
+                        }
+        
                     }
-    
-                }
-            )
+                )
+            }
         })
 
 
