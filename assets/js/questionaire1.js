@@ -18,7 +18,7 @@ document.getElementById("begin-form").addEventListener("submit",(e)=>{
 
         connect.POST(
             "/assets/php/score.php",
-            {a:"REG",phone:document.getElementById("phonenumber").value},
+            {a:"REG",set:set,phone:document.getElementById("phonenumber").value},
             (a,b) => {            
                 if(b.status) {
                     // Quah, your code when you press start should be here
@@ -47,31 +47,6 @@ document.querySelector('#contentbody').addEventListener('click', (e) => {
 
         y = Array.from(document.querySelectorAll(`.${set}question`)[current].getElementsByClassName(`${set}ans`)).indexOf(e.target);
         answers[current] = y;
-
-        // if (set == "set1") {
-        //     if (current == 0) { if (y == 1) { cs = cs + 1; } }
-        //     else if (current == 1) { if (y == 2) { cs = cs + 1; } }
-        //     else if (current == 2) { if (y == 0) { cs = cs + 1; } }
-        //     else if (current == 3) { if (y == 1) { cs = cs + 1; } }
-        //     else if (current == 4) { if (y == 0) { cs = cs + 1; } }
-        //     else if (current == 5) { if (y == 2) { cs = cs + 1; } }
-        //     else if (current == 6) { if (y == 1) { cs = cs + 1; } }
-        //     else if (current == 7) { if (y == 3) { cs = cs + 1; } }
-        //     else if (current == 8) { if (y == 3) { cs = cs + 1; } }
-        //     else if (current == 9) { if (y == 0) { cs = cs + 1; } }
-        // }
-        // else {
-        //     if (current == 0) { if (y == 2) { cs = cs + 1; } }
-        //     else if (current == 1) { if (y == 2) { cs = cs + 1; } }
-        //     else if (current == 2) { if (y == 1) { cs = cs + 1; } }
-        //     else if (current == 3) { if (y == 2) { cs = cs + 1; } }
-        //     else if (current == 4) { if (y == 1) { cs = cs + 1; } }
-        //     else if (current == 5) { if (y == 3) { cs = cs + 1; } }
-        //     else if (current == 6) { if (y == 2) { cs = cs + 1; } }
-        //     else if (current == 7) { if (y == 0) { cs = cs + 1; } }
-        //     else if (current == 8) { if (y == 1) { cs = cs + 1; } }
-        //     else if (current == 9) { if (y == 1) { cs = cs + 1; } }
-        // }
         current = current + 1;
         document.querySelectorAll(`.${set}question`)[current - 1].classList.add("fadetoright");
         document.querySelector('#contentbody').addEventListener("webkitAnimationEnd", (e) => {

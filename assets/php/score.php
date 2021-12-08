@@ -17,9 +17,9 @@ $time[] = ["step" => "mysql_init", "time" => microtime(true), "del" => $time[cou
 switch ($_POST['a']) {
     case "REG":
         $find = $mysql->GetOneItem(
-            "SELECT s_id FROM score WHERE s_phone = ? ",
-            "s",
-            $_POST['phone']
+            "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ?", 
+            "ss",
+            [$_POST['phone'],$_POST['set']]
         );
 
         $time[] = ["step" => "mysql_find", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
@@ -30,10 +30,11 @@ switch ($_POST['a']) {
         break;
     case "SCORE":
         $find = $mysql->GetOneItem(
-            "SELECT s_id FROM score WHERE s_phone = ? ",
-            "s",
-            $_POST['phone']
+            "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ?", 
+            "ss",
+            [$_POST['phone'],$_POST['set']]
         );
+
         $time[] = ["step" => "mysql_find", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
 
         if (!empty($find)) {
@@ -54,9 +55,9 @@ switch ($_POST['a']) {
         }
 
         $addScore = $mysql->Exec_Prepared(
-            "INSERT INTO score (s_phone,s_name,s_score) VALUES (?,?,?) ",
-            "ssi",
-            [$_POST['phone'], $_POST['name'], $score]
+            "INSERT INTO score (s_phone,s_name,s_score,s_set) VALUES (?,?,?,?) ",
+            "ssis",
+            [$_POST['phone'], $_POST['name'], $score,$_POST['set']]
         );
 
         $time[] = ["step" => "mysql_add", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
