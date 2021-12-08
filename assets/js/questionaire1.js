@@ -1,6 +1,7 @@
 var current = 0;
 var cs = 0;
 const set = "set1";
+let answers = [];
 
 document.querySelector('#contentbody').addEventListener('click', (e) => {
     if (e.target.classList.contains("questionbegin") == true) {
@@ -17,17 +18,18 @@ document.querySelector('#contentbody').addEventListener('click', (e) => {
         console.log(current)
 
         y = Array.from(document.querySelectorAll(`.${set}question`)[current].getElementsByClassName(`${set}ans`)).indexOf(e.target);
+        answers[current] = y;
         
-        if (current == 0) { if (y == 1) { cs = cs + 1; } }
-        else if (current == 1) { if (y == 2) { cs = cs + 1; } }
-        else if (current == 2) { if (y == 0) { cs = cs + 1; } }
-        else if (current == 3) { if (y == 1) { cs = cs + 1; } }
-        else if (current == 4) { if (y == 0) { cs = cs + 1; } }
-        else if (current == 5) { if (y == 2) { cs = cs + 1; } }
-        else if (current == 6) { if (y == 1) { cs = cs + 1; } }
-        else if (current == 7) { if (y == 3) { cs = cs + 1; } }
-        else if (current == 8) { if (y == 3) { cs = cs + 1; } }
-        else if (current == 9) { if (y == 0) { cs = cs + 1; } }
+        // if (current == 0) { if (y == 1) { cs = cs + 1; } }
+        // else if (current == 1) { if (y == 2) { cs = cs + 1; } }
+        // else if (current == 2) { if (y == 0) { cs = cs + 1; } }
+        // else if (current == 3) { if (y == 1) { cs = cs + 1; } }
+        // else if (current == 4) { if (y == 0) { cs = cs + 1; } }
+        // else if (current == 5) { if (y == 2) { cs = cs + 1; } }
+        // else if (current == 6) { if (y == 1) { cs = cs + 1; } }
+        // else if (current == 7) { if (y == 3) { cs = cs + 1; } }
+        // else if (current == 8) { if (y == 3) { cs = cs + 1; } }
+        // else if (current == 9) { if (y == 0) { cs = cs + 1; } }
 
         /* answer for set 2
         if (current == 0) { if (y == 2) { cs = cs + 1; } }
