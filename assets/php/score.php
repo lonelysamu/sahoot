@@ -17,7 +17,7 @@ $time[] = ["step" => "mysql_init", "time" => microtime(true), "del" => $time[cou
 switch ($_POST['a']) {
     case "REG":
         $find = $mysql->GetOneItem(
-            "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ?",
+            "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ? AND s_date",
             "ss",
             [$_POST['phone'], $_POST['set']]
         );
@@ -29,17 +29,17 @@ switch ($_POST['a']) {
             exitStatus("OK", ['status' => false, "reason" => "USER_EXISTS", "time" => $time]);
         break;
     case "SCORE":
-        $find = $mysql->GetOneItem(
-            "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ?",
-            "ss",
-            [$_POST['phone'], $_POST['set']]
-        );
+        // $find = $mysql->GetOneItem(
+        //     "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ?",
+        //     "ss",
+        //     [$_POST['phone'], $_POST['set']]
+        // );
 
-        $time[] = ["step" => "mysql_find", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
+        // $time[] = ["step" => "mysql_find", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
 
-        if (!empty($find)) {
-            exitStatus("OK", ['status' => false, "USER_EXISTS"]);
-        }
+        // if (!empty($find)) {
+        //     exitStatus("OK", ['status' => false, "USER_EXISTS"]);
+        // }
 
         // check score
         $score = 0;
@@ -66,7 +66,7 @@ switch ($_POST['a']) {
         $time[] = ["step" => "mysql_add", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
 
         is_numeric($addScore) ?
-            exitStatus("OK", ['status' => true, "time" => $time]) :
+            exitStatus("OK", ['status' => true, "time" => $time,"score"=>$score]) :
             exitStatus("OK", ['status' => false, "reason" => $addScore]);
         break;
 }
