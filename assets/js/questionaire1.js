@@ -4,10 +4,11 @@ const set = "set1";
 let answers = [];
 let connect = new VW_Connect();
 
-document.querySelector('#contentbody').addEventListener('click', (e) => {
+// Quah, the initial bit i moved here, to this submit event 
+document.getElementById("begin-form").addEventListener("submit",(e)=>{
     e.preventDefault();
-    if (e.target.classList.contains("questionbegin") == true) {
-        var button = docuement.getElementById("questionBegin-btn");
+    // if (e.target.classList.contains("questionbegin") == true) {
+        var button = document.getElementById("questionBegin-btn");
         button.disabled = true;
         var span = document.createElement("span");
         span.id = 'loader-span';
@@ -35,8 +36,12 @@ document.querySelector('#contentbody').addEventListener('click', (e) => {
 
             }
         )
-    }
-    else if (e.target.classList.contains(`${set}ans`) == true) {
+    // }
+})
+
+document.querySelector('#contentbody').addEventListener('click', (e) => {
+    
+    if (e.target.classList.contains(`${set}ans`) == true) {
         console.log(current)
 
         y = Array.from(document.querySelectorAll(`.${set}question`)[current].getElementsByClassName(`${set}ans`)).indexOf(e.target);
