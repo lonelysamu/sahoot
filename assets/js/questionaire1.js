@@ -55,10 +55,3 @@ document.querySelector('#contentbody').addEventListener('click', (e) => {
     }
 
 })
-
-
-function removeall(item, index) {
-    item.classList.add("d-none");
-    item.classList.remove("fadein");
-    item.classList.remove("fadefromleft2", "hidetillscroll", "fadefromleft1");
-}
