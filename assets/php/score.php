@@ -66,7 +66,7 @@ switch ($_POST['a']) {
         $time[] = ["step" => "mysql_add", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
 
         is_numeric($addScore) ?
-            exitStatus("OK", ['status' => true, "time" => $time]) :
+            exitStatus("OK", ['status' => true, "time" => $time,"score"=>$score]) :
             exitStatus("OK", ['status' => false, "reason" => $addScore]);
         break;
 }
