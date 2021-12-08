@@ -57,11 +57,11 @@ switch ($_POST['a']) {
             $time[] = ["step" => "checkScore-" . $i, "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
         }
 
-        // $addScore = $mysql->Exec_Prepared(
-        //     "INSERT INTO score (s_phone,s_name,s_score,s_set) VALUES (?,?,?,?) ",
-        //     "ssis",
-        //     [$_POST['phone'], $_POST['name'], $score,$_POST['set']]
-        // );
+        $addScore = $mysql->Exec_Prepared(
+            "INSERT INTO score (s_phone,s_name,s_score,s_set) VALUES (?,?,?,?) ",
+            "ssis",
+            [$_POST['phone'], $_POST['name'], $score,$_POST['set']]
+        );
 
         $time[] = ["step" => "mysql_add", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
 
