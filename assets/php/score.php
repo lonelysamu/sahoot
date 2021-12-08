@@ -43,6 +43,7 @@ switch ($_POST['a']) {
 
         // check score
         $score = 0;
+        $debug = [];
         $max = 10;
         $answers = [
             "set1" => [1, 2, 0, 1, 0, 2, 1, 3, 3, 0],
@@ -50,20 +51,21 @@ switch ($_POST['a']) {
         ];
 
         for ($i = 0; $i < $max; $i++) {
-            $score += $_POST['ans'][$i] == $answers[$_POST['set']][$i] ? 1 : 0;
+            $score += ($_POST['ans'][$i] == $answers[$_POST['set']][$i]) ? 1 : 0;
+            $debug[] = ["user" => $_POST['ans'][$i],"system" => $answers[$_POST['set']][$i]];
             $time[] = ["step" => "checkScore-" . $i, "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
         }
 
-        $addScore = $mysql->Exec_Prepared(
-            "INSERT INTO score (s_phone,s_name,s_score,s_set) VALUES (?,?,?,?) ",
-            "ssis",
-            [$_POST['phone'], $_POST['name'], $score,$_POST['set']]
-        );
+        // $addScore = $mysql->Exec_Prepared(
+        //     "INSERT INTO score (s_phone,s_name,s_score,s_set) VALUES (?,?,?,?) ",
+        //     "ssis",
+        //     [$_POST['phone'], $_POST['name'], $score,$_POST['set']]
+        // );
 
         $time[] = ["step" => "mysql_add", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
 
         is_numeric($addScore) ?
-            exitStatus("OK", ['status' => true, "score" => $score, "time" => $time]) :
+            exitStatus("OK", ['status' => true, "score" => $score, "time" => $time,"debug"=>$debug]) :
             exitStatus("OK", ['status' => false, "reason" => $addScore, "time" => $time]);
         break;
 }
