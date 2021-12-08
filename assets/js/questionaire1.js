@@ -17,30 +17,30 @@ document.querySelector('#contentbody').addEventListener('click', (e) => {
         console.log(current)
 
         y = Array.from(document.querySelectorAll(`.${set}question`)[current].getElementsByClassName(`${set}ans`)).indexOf(e.target);
-        
-        if(set == "set1"){
-        if (current == 0) { if (y == 1) { cs = cs + 1; } }
-        else if (current == 1) { if (y == 2) { cs = cs + 1; } }
-        else if (current == 2) { if (y == 0) { cs = cs + 1; } }
-        else if (current == 3) { if (y == 1) { cs = cs + 1; } }
-        else if (current == 4) { if (y == 0) { cs = cs + 1; } }
-        else if (current == 5) { if (y == 2) { cs = cs + 1; } }
-        else if (current == 6) { if (y == 1) { cs = cs + 1; } }
-        else if (current == 7) { if (y == 3) { cs = cs + 1; } }
-        else if (current == 8) { if (y == 3) { cs = cs + 1; } }
-        else if (current == 9) { if (y == 0) { cs = cs + 1; } }
+
+        if (set == "set1") {
+            if (current == 0) { if (y == 1) { cs = cs + 1; } }
+            else if (current == 1) { if (y == 2) { cs = cs + 1; } }
+            else if (current == 2) { if (y == 0) { cs = cs + 1; } }
+            else if (current == 3) { if (y == 1) { cs = cs + 1; } }
+            else if (current == 4) { if (y == 0) { cs = cs + 1; } }
+            else if (current == 5) { if (y == 2) { cs = cs + 1; } }
+            else if (current == 6) { if (y == 1) { cs = cs + 1; } }
+            else if (current == 7) { if (y == 3) { cs = cs + 1; } }
+            else if (current == 8) { if (y == 3) { cs = cs + 1; } }
+            else if (current == 9) { if (y == 0) { cs = cs + 1; } }
         }
-        else{   
-        if (current == 0) { if (y == 2) { cs = cs + 1; } }
-        else if (current == 1) { if (y == 2) { cs = cs + 1; } }
-        else if (current == 2) { if (y == 1) { cs = cs + 1; } }
-        else if (current == 3) { if (y == 2) { cs = cs + 1; } }
-        else if (current == 4) { if (y == 1) { cs = cs + 1; } }
-        else if (current == 5) { if (y == 3) { cs = cs + 1; } }
-        else if (current == 6) { if (y == 2) { cs = cs + 1; } }
-        else if (current == 7) { if (y == 0) { cs = cs + 1; } }
-        else if (current == 8) { if (y == 1) { cs = cs + 1; } }
-        else if (current == 9) { if (y == 1) { cs = cs + 1; } }
+        else {
+            if (current == 0) { if (y == 2) { cs = cs + 1; } }
+            else if (current == 1) { if (y == 2) { cs = cs + 1; } }
+            else if (current == 2) { if (y == 1) { cs = cs + 1; } }
+            else if (current == 3) { if (y == 2) { cs = cs + 1; } }
+            else if (current == 4) { if (y == 1) { cs = cs + 1; } }
+            else if (current == 5) { if (y == 3) { cs = cs + 1; } }
+            else if (current == 6) { if (y == 2) { cs = cs + 1; } }
+            else if (current == 7) { if (y == 0) { cs = cs + 1; } }
+            else if (current == 8) { if (y == 1) { cs = cs + 1; } }
+            else if (current == 9) { if (y == 1) { cs = cs + 1; } }
         }
         current = current + 1;
         document.querySelectorAll(`.${set}question`)[current - 1].classList.add("fadetoright");
