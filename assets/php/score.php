@@ -53,9 +53,9 @@ switch ($_POST['a']) {
         }
 
         $addScore = $mysql->Exec_Prepared(
-            "INSERT INTO score (s_phone,s_score) VALUES (?,?) ",
+            "INSERT INTO score (s_phone,s_name,s_score) VALUES (?,?,?) ",
             "si",
-            [$_POST['phone'], $score]
+            [$_POST['phone'],$_POST['name'], $score]
         );
 
         $time[] = ["step" => "mysql_add", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
@@ -65,5 +65,3 @@ switch ($_POST['a']) {
             exitStatus("OK", ['status' => false, "reason" => $addScore, "time" => $time]);
         break;
 }
-
-?>

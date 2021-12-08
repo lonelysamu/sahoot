@@ -82,6 +82,7 @@ document.querySelector('#contentbody').addEventListener('click', (e) => {
                 "/assets/php/score.php",
                 {
                     a:"SCORE",
+                    name : document.getElementById("name").value,
                     phone:document.getElementById("phonenumber").value,
                     set : set,
                     ans : answers 
