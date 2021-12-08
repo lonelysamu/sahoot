@@ -5,6 +5,16 @@ let answers = [];
 let connect = new VW_Connect();
 var one = 0;
 
+const startQuiz = () => {    
+    // Quah, your code when you press start should be here
+    document.getElementById("lobby").classList.add("fadetoright");
+    document.querySelector('#contentbody').addEventListener("webkitAnimationEnd", (e) => {
+        document.getElementById("lobby").classList.add("d-none");
+        document.getElementById("lobby").classList.remove("fadetoright");
+        document.querySelectorAll(`.${set}question`)[current].classList.remove("d-none");
+        document.querySelectorAll(`.${set}question`)[current].classList.add("fadefromleft1");
+    })
+}
 // Quah, the initial bit i moved here, to this submit event 
 document.getElementById("begin-form").addEventListener("submit",(e)=>{
     e.preventDefault();
@@ -15,28 +25,20 @@ document.getElementById("begin-form").addEventListener("submit",(e)=>{
         span.id = 'loader-span';
         span.classList.add('fa','fa-spinner','fa-pulse');
         button.prepend(span);
+        startQuiz();
+        // connect.POST(
+        //     "/assets/php/score.php",
+        //     {a:"REG",set:set,phone:document.getElementById("phonenumber").value},
+        //     (a,b) => {            
+        //         if(b.status) {
+        //         } else {
+        //             alert("Thank you for trying the quiz!");
+        //             button.removeChild(document.getElementById("loader-span"));
+        //             button.disabled = false;
+        //         }
 
-        connect.POST(
-            "/assets/php/score.php",
-            {a:"REG",set:set,phone:document.getElementById("phonenumber").value},
-            (a,b) => {            
-                if(b.status) {
-                    // Quah, your code when you press start should be here
-                    document.getElementById("lobby").classList.add("fadetoright");
-                    document.querySelector('#contentbody').addEventListener("webkitAnimationEnd", (e) => {
-                        document.getElementById("lobby").classList.add("d-none");
-                        document.getElementById("lobby").classList.remove("fadetoright");
-                        document.querySelectorAll(`.${set}question`)[current].classList.remove("d-none");
-                        document.querySelectorAll(`.${set}question`)[current].classList.add("fadefromleft1");
-                    })
-                } else {
-                    alert("Thank you for trying the quiz!");
-                    button.removeChild(document.getElementById("loader-span"));
-                    button.disabled = false;
-                }
-
-            }
-        )
+        //     }
+        // )
     // }
 })
 

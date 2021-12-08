@@ -17,7 +17,7 @@ $time[] = ["step" => "mysql_init", "time" => microtime(true), "del" => $time[cou
 switch ($_POST['a']) {
     case "REG":
         $find = $mysql->GetOneItem(
-            "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ?",
+            "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ? AND s_date",
             "ss",
             [$_POST['phone'], $_POST['set']]
         );
