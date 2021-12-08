@@ -2,6 +2,7 @@ var current = 0;
 var cs = 0;
 const set = "set1";
 let answers = [];
+let connect = new VW_Connect();
 
 document.querySelector('#contentbody').addEventListener('click', (e) => {
     if (e.target.classList.contains("questionbegin") == true) {
@@ -18,33 +19,6 @@ document.querySelector('#contentbody').addEventListener('click', (e) => {
         console.log(current)
 
         y = Array.from(document.querySelectorAll(`.${set}question`)[current].getElementsByClassName(`${set}ans`)).indexOf(e.target);
-<<<<<<< HEAD
-        answers[current] = y;
-        
-        // if (current == 0) { if (y == 1) { cs = cs + 1; } }
-        // else if (current == 1) { if (y == 2) { cs = cs + 1; } }
-        // else if (current == 2) { if (y == 0) { cs = cs + 1; } }
-        // else if (current == 3) { if (y == 1) { cs = cs + 1; } }
-        // else if (current == 4) { if (y == 0) { cs = cs + 1; } }
-        // else if (current == 5) { if (y == 2) { cs = cs + 1; } }
-        // else if (current == 6) { if (y == 1) { cs = cs + 1; } }
-        // else if (current == 7) { if (y == 3) { cs = cs + 1; } }
-        // else if (current == 8) { if (y == 3) { cs = cs + 1; } }
-        // else if (current == 9) { if (y == 0) { cs = cs + 1; } }
-
-        /* answer for set 2
-        if (current == 0) { if (y == 2) { cs = cs + 1; } }
-        else if (current == 1) { if (y == 2) { cs = cs + 1; } }
-        else if (current == 2) { if (y == 1) { cs = cs + 1; } }
-        else if (current == 3) { if (y == 2) { cs = cs + 1; } }
-        else if (current == 4) { if (y == 1) { cs = cs + 1; } }
-        else if (current == 5) { if (y == 3) { cs = cs + 1; } }
-        else if (current == 6) { if (y == 2) { cs = cs + 1; } }
-        else if (current == 7) { if (y == 0) { cs = cs + 1; } }
-        else if (current == 8) { if (y == 1) { cs = cs + 1; } }
-        else if (current == 9) { if (y == 1) { cs = cs + 1; } }
-        */
-=======
 
         if (set == "set1") {
             if (current == 0) { if (y == 1) { cs = cs + 1; } }
@@ -70,7 +44,6 @@ document.querySelector('#contentbody').addEventListener('click', (e) => {
             else if (current == 8) { if (y == 1) { cs = cs + 1; } }
             else if (current == 9) { if (y == 1) { cs = cs + 1; } }
         }
->>>>>>> 229a3ff1c43f75e3446adaadf91d786502fdd855
         current = current + 1;
         document.querySelectorAll(`.${set}question`)[current - 1].classList.add("fadetoright");
         document.querySelector('#contentbody').addEventListener("webkitAnimationEnd", (e) => {
