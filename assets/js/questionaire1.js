@@ -7,18 +7,31 @@ let connect = new VW_Connect();
 document.querySelector('#contentbody').addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target.classList.contains("questionbegin") == true) {
+        var button = docuement.getElementById("questionBegin-btn");
+        button.disabled = true;
+        var span = document.createElement("span");
+        span.id = 'loader-span';
+        span.classList.add('fa','fa-spinner','fa-pulse');
+        button.prepend(span);
+
         connect.POST(
             "/assets/php/score.php",
             {a:"REG",phone:document.getElementById("phonenumber").value},
-            (a,b) => {
-                // Quah, your code when you press start should be here
-            document.getElementById("lobby").classList.add("fadetoright");
-            document.querySelector('#contentbody').addEventListener("webkitAnimationEnd", (e) => {
-            document.getElementById("lobby").classList.add("d-none");
-            document.getElementById("lobby").classList.remove("fadetoright");
-            document.querySelectorAll(`.${set}question`)[current].classList.remove("d-none");
-            document.querySelectorAll(`.${set}question`)[current].classList.add("fadefromleft1");
-        })
+            (a,b) => {            
+                if(b.status) {
+                    // Quah, your code when you press start should be here
+                    document.getElementById("lobby").classList.add("fadetoright");
+                    document.querySelector('#contentbody').addEventListener("webkitAnimationEnd", (e) => {
+                        document.getElementById("lobby").classList.add("d-none");
+                        document.getElementById("lobby").classList.remove("fadetoright");
+                        document.querySelectorAll(`.${set}question`)[current].classList.remove("d-none");
+                        document.querySelectorAll(`.${set}question`)[current].classList.add("fadefromleft1");
+                    })
+                } else {
+                    alert("Thank you for trying the quiz!");
+                    button.removeChild(document.getElementById("loader-span"));
+                    button.disabled = false;
+                }
 
             }
         )
