@@ -5,15 +5,23 @@ let answers = [];
 let connect = new VW_Connect();
 
 document.querySelector('#contentbody').addEventListener('click', (e) => {
+    e.preventDefault();
     if (e.target.classList.contains("questionbegin") == true) {
-
-        document.getElementById("lobby").classList.add("fadetoright");
-        document.querySelector('#contentbody').addEventListener("webkitAnimationEnd", (e) => {
+        connect.POST(
+            "/assets/php/score.php",
+            {a:"REG",phone:document.getElementById("phonenumber").value},
+            (a,b) => {
+                // Quah, your code when you press start should be here
+            document.getElementById("lobby").classList.add("fadetoright");
+            document.querySelector('#contentbody').addEventListener("webkitAnimationEnd", (e) => {
             document.getElementById("lobby").classList.add("d-none");
             document.getElementById("lobby").classList.remove("fadetoright");
             document.querySelectorAll(`.${set}question`)[current].classList.remove("d-none");
             document.querySelectorAll(`.${set}question`)[current].classList.add("fadefromleft1");
         })
+
+            }
+        )
     }
     else if (e.target.classList.contains(`${set}ans`) == true) {
         console.log(current)
