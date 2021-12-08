@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['a'])) {
     exit();
 }
 
+
 $mysql = new MySQL($dbc);
 
 $time[] = ["step" => "mysql_init", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
@@ -55,7 +56,7 @@ switch ($_POST['a']) {
         $addScore = $mysql->Exec_Prepared(
             "INSERT INTO score (s_phone,s_name,s_score) VALUES (?,?,?) ",
             "ssi",
-            [$_POST['phone'],$_POST['name'], $score]
+            [$_POST['phone'], $_POST['name'], $score]
         );
 
         $time[] = ["step" => "mysql_add", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];

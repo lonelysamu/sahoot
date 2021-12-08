@@ -3,6 +3,7 @@ var cs = 0;
 const set = "set1";
 let answers = [];
 let connect = new VW_Connect();
+var one = 0;
 
 // Quah, the initial bit i moved here, to this submit event 
 document.getElementById("begin-form").addEventListener("submit",(e)=>{
@@ -78,7 +79,8 @@ document.querySelector('#contentbody').addEventListener('click', (e) => {
             document.querySelectorAll(`.${set}question`)[current].classList.remove("d-none");
             document.querySelectorAll(`.${set}question`)[current].classList.add("fadefromleft1");
 
-            if(current > 9 ){ 
+            if(current > 9 && one == 0){ 
+                one =1;
                 connect.POST(
                     "/assets/php/score.php",
                     {
