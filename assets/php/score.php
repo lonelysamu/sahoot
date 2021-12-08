@@ -17,9 +17,9 @@ $time[] = ["step" => "mysql_init", "time" => microtime(true), "del" => $time[cou
 switch ($_POST['a']) {
     case "REG":
         $find = $mysql->GetOneItem(
-            "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ?", 
+            "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ?",
             "ss",
-            [$_POST['phone'],$_POST['set']]
+            [$_POST['phone'], $_POST['set']]
         );
 
         $time[] = ["step" => "mysql_find", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
@@ -30,9 +30,9 @@ switch ($_POST['a']) {
         break;
     case "SCORE":
         $find = $mysql->GetOneItem(
-            "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ?", 
+            "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ?",
             "ss",
-            [$_POST['phone'],$_POST['set']]
+            [$_POST['phone'], $_POST['set']]
         );
 
         $time[] = ["step" => "mysql_find", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
@@ -52,7 +52,7 @@ switch ($_POST['a']) {
 
         for ($i = 0; $i < $max; $i++) {
             $score += ($_POST['ans'][$i] == $answers[$_POST['set']][$i]) ? 1 : 0;
-            $debug[] = ["user" => $_POST['ans'][$i],"system" => $answers[$_POST['set']][$i]];
+            $debug[] = ["user" => $_POST['ans'][$i], "system" => $answers[$_POST['set']][$i]];
             $time[] = ["step" => "checkScore-" . $i, "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
         }
 
@@ -65,7 +65,7 @@ switch ($_POST['a']) {
         $time[] = ["step" => "mysql_add", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
 
         is_numeric($addScore) ?
-            exitStatus("OK", ['status' => true, "score" => $score, "time" => $time,"debug"=>$debug]) :
-            exitStatus("OK", ['status' => false, "reason" => $addScore, "time" => $time]);
+            exitStatus("OK", ['status' => true, "score" => $score, "time" => $time, "debug" => $debug]) :
+            exitStatus("OK", ['status' => false, "reason" => $addScore, "time" => $time, "debug" => $debug]);
         break;
 }
