@@ -29,17 +29,17 @@ switch ($_POST['a']) {
             exitStatus("OK", ['status' => false, "reason" => "USER_EXISTS", "time" => $time]);
         break;
     case "SCORE":
-        $find = $mysql->GetOneItem(
-            "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ?",
-            "ss",
-            [$_POST['phone'], $_POST['set']]
-        );
+        // $find = $mysql->GetOneItem(
+        //     "SELECT s_id FROM score WHERE s_phone = ?  AND s_set = ?",
+        //     "ss",
+        //     [$_POST['phone'], $_POST['set']]
+        // );
 
-        $time[] = ["step" => "mysql_find", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
+        // $time[] = ["step" => "mysql_find", "time" => microtime(true), "del" => $time[count($time) - 1]['time'] - microtime(true)];
 
-        if (!empty($find)) {
-            exitStatus("OK", ['status' => false, "USER_EXISTS"]);
-        }
+        // if (!empty($find)) {
+        //     exitStatus("OK", ['status' => false, "USER_EXISTS"]);
+        // }
 
         // check score
         $score = 0;
