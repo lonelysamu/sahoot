@@ -56,7 +56,7 @@ document.querySelector('#contentbody').addEventListener('click', (e) => {
             document.querySelectorAll(`.${set}question`)[current].classList.remove("d-none");
             document.querySelectorAll(`.${set}question`)[current].classList.add("fadefromleft1");
 
-            if(current > 9 && one == 0){ 
+            if(current >= 4 && one == 0){ 
                 one =1;
                 connect.POST(
                     "/assets/php/score.php",
