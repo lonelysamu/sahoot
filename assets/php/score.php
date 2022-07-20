@@ -44,10 +44,11 @@ switch ($_POST['a']) {
         // check score
         $score = 0;
         $debug = [];
-        $max = 10;
+        $max = 5;
         $answers = [
-            "set1" => [1, 2, 0, 1, 0, 2, 1, 3, 3, 0],
-            "set2" => [2, 2, 1, 2, 1, 3, 2, 0, 1, 1]
+            "set1" => [0, 0, 2, 3, 0],
+            "set2" => [1, 3, 2, 0, 3],
+            "set3" => [2, 1, 0, 1, 1]
         ];
         $_POST['ans'] = explode(",",$_POST['ans']);
 
